@@ -21,7 +21,8 @@ function addTask() {
     check.setAttribute("id", "filled-in-box" + i); // +i permet d'incrémenter mon id
 
     label.setAttribute("for", "filled-in-box" + i);
-    label.setAttribute("id", "labelbis" + i)
+    label.setAttribute("id", input); //ajout d'un id variable à chaque label pr sélection rayer
+
     label.innerHTML = input; //place la valeur de l'input (ajout tâche) dans le label
     i++; //va permettre d'incrémenter de 1 mes 2 i placés au-dessus
 
@@ -30,14 +31,41 @@ function addTask() {
     ulToDo.appendChild(liste); //attribution des li à mon élément ul
  
 
-    check.addEventListener("click", doTask);
+    var okTask = check.addEventListener("click", doTask); //quand check est cliqué, il exécute la fonction suivante
     
     function doTask() {
-        console.log(this.id);
-        document.getElementById('labelbis'+ (i-1)).style.textDecoration="line-through";
+        document.getElementById(input).style.textDecoration="line-through"; //sélection du label et lui attribuer un css pour rayer
+    };
+    
+    var restDo = document.getElementById('test1'); //sélection du bouton reste à faire
+    var tachesOk = document.getElementById('test2');
+    var allTask = document.getElementById('test3');
+
+    suppNoTask = restDo.addEventListener("click", filtre); //qd reste à faire est cliqué exécution fction
+    supptachesOk = tachesOk.addEventListener("click", filtre2);
+    completeList = allTask.addEventListener('click', filtre3);
+    
+
+    function filtre() {
+        if (check.checked) { //si bouton coché
+            document.getElementById(input).style.display = "none"; //exécute le cache des éléments cochés
+        }else{
+            document.getElementById(input).style.display = ""; //sinon fait apparaître les éléments
+        }
     };
 
+    function filtre2() {
+        if (!check.checked) { 
+            document.getElementById(input).style.display = "none"; 
+        }else{
+            document.getElementById(input).style.display = "";
+        }
     };
+
+    function filtre3() {
+            document.getElementById(input).style.display = ""; //affiche toutes les tâches par défaut
+    }
+};
 
 
 
