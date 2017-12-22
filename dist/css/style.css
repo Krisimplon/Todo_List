@@ -1,1 +1,1 @@
-body{background-color:red}
+body{background-color:#fff8dc;font-family:'Open Sans',sans-serif;display:flex;flex-direction:column}body .add{display:flex;flex-direction:column;margin-left:20%}body .add #search{width:25%;margin-top:40px}body .add #bouton{width:27%;margin-top:20px}body #title{display:flex;justify-content:center;font-size:15px}
