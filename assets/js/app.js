@@ -29,27 +29,32 @@ function addTask() {
 
     heure.setAttribute("class", "affichageHeure");//attribution d'une classe à mon élément span
 
-    supp.setAttribute("class", "waves-effect waves-light btn");
+    supp.setAttribute("class", "waves-effect waves-light btn"); //attribution d'une classe à mon bouton
 
     label.innerHTML = input; //place la valeur de l'input (ajout tâche) dans le label
     i++; //va permettre d'incrémenter de 1 mes 2 i placés au-dessus
-    heure.innerHTML = " " + dateDeb.toLocaleDateString("fr-FR") + " " + dateDeb.toLocaleTimeString("fr-FR") + " ";//place l'heure dans le html avec une simplification permettant de la rendre lisible
+    heure.innerHTML = "   " + dateDeb.toLocaleDateString("fr-FR") + " - " + dateDeb.toLocaleTimeString("fr-FR") + "   ";//place l'heure dans le html avec une simplification permettant de la rendre lisible
     supp.innerHTML = "Supprimer";
 
     liste.appendChild(check); //attribution du check à mon li
     liste.appendChild(label);  //attribution du label à mon li
     liste.appendChild(heure); // attribution du span à mon li
-    liste.appendChild(supp);
+    liste.appendChild(supp); //attribution du bouton à mon li
     ulToDo.appendChild(liste); //attribution des li à mon élément ul
  
 
     var okTask = check.addEventListener("click", doTask); //quand check est cliqué, il exécute la fonction suivante
     
     function doTask() {
-        document.getElementById(input).style.textDecoration="line-through"; //sélection du label et lui attribuer un css pour rayer
+        if(check.checked) {
+            document.getElementById(input).style.textDecoration="line-through"; //sélection du label et lui attribuer un css pour rayer
+        }else {
+            document.getElementById(input).style.textDecoration="none";
+        }
+        
         var dateFin = new Date(); //création d'une date/horaire de fin(exécution de la task)
-        var heureFin = dateFin.toLocaleDateString("fr-FR") + " " + dateFin.toLocaleTimeString("fr-FR"); //lisibilité de l'horaire
-        console.log(heureFin);
+        //var heureFin = dateFin.toLocaleDateString("fr-FR") + " " + dateFin.toLocaleTimeString("fr-FR"); //lisibilité de l'horaire
+        //console.log(heureFin);
 
         temps = dateFin.getTime() - dateDeb.getTime(); //calcul du temps écoulé entre les 2 fonctions de création et de réalisation
         console.log(temps/1000);
@@ -61,6 +66,7 @@ function addTask() {
 
     function doSupp() {
         document.getElementById("list").removeChild(liste); //supprime les élèments li de la ul
+        stockage.removeItem(input);
     };
     
     var restDo = document.getElementById('test1'); //sélection du bouton reste à faire
@@ -74,27 +80,26 @@ function addTask() {
 
     function filtre() {
         if (check.checked) { //si bouton coché
-            document.getElementById("elmtLi").style.display = "none"; //exécute le cache des éléments cochés
+            document.getElementById(input).parentElement.style.display = "none"; //exécute le cache des éléments cochés
         }else{
-            document.getElementById("elmtLi").style.display = ""; //sinon fait apparaître les éléments
+            document.getElementById(input).parentElement.style.display = ""; //sinon fait apparaître les éléments
         }
     };
 
     function filtre2() {
         if (!check.checked) { 
-            document.getElementById(input).style.display = "none"; 
+            document.getElementById(input).parentElement.style.display = "none"; 
         }else{
-            document.getElementById(input).style.display = "";
+            document.getElementById(input).parentElement.style.display = "";
         }
     };
 
     function filtre3() {
-            document.getElementById(input).style.display = ""; //affiche toutes les tâches par défaut
+            document.getElementById(input).parentElement.style.display = ""; //affiche toutes les tâches par défaut
     }
-
-      //création du stockage des tâches dans le localstorage
-      var stockage = localStorage;
-      stockage.setItem(input, JSON.stringify(i)); //JSON va remplacer l'objet par un string
+        //création du stockage des tâches dans le localstorage
+        var stockage = localStorage;
+        stockage.setItem(input, dateDeb);
 };
 
 

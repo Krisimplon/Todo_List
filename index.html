@@ -9,26 +9,27 @@
 </head>
 <body>
 	
-	<span id="bigtitle"><strong>Liste à faire</strong></span>
-	<div class="add">
-		<input id="search" type="text" name="task" value="">
-		<button class="waves-effect waves-light btn-large" id="bouton">Ajouter tâche</button>
+	<span id="bigtitle"><strong>ToDo List</strong></span>
+	<div  class="add">
+		<form>
+			<input id="search" type="text" name="task" value="">
+			<button type="button" class="waves-effect waves-light btn-large" id="bouton">Ajouter</button>
+		</form>
 	</div>
-	<h3 id="title">A FAIRE</h3>
 	<ul id="list">
 	</ul>
 
-	<form>
+	<form id="testComplet">
 		<p>
-			<input name="group1" type="radio" id="test3" />
+			<input name="group1" type="radio" id="test3" class="radio"/>
 			<label for="test3">Toutes les tâches</label>
 		</p>
 		<p>
-			<input name="group1" type="radio" id="test1" />
+			<input name="group1" type="radio" id="test1" class="radio"/>
 			<label for="test1">Reste à faire</label>
 		</p>
 		<p>
-			<input name="group1" type="radio" id="test2" />
+			<input name="group1" type="radio" id="test2" class="radio"/>
 			<label for="test2">Tâches faites</label>
 		</p>
 	</form>
