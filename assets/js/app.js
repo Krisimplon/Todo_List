@@ -9,30 +9,30 @@ var stockage = localStorage;
 
 bouton.addEventListener("click", addTask); //quand je clique sur le bouton, j'exécute la fonction ci-dessous
 
+var input = document.getElementById("search").value; //je récupère dans une variable la valeur de mon input
+
 function addTask() {
     var input = document.getElementById("search").value; //je récupère dans une variable la valeur de mon input
 
     if (input==0) { //si l'input est nul (non renseigné) 
-        alert("Tâche non valide");
-        return false; //alors n'exécutera pas la fonction
-    };
+alert("Tâche non valide");
+return false; //alors n'exécutera pas la fonction
+};
 
-    for ( var i = 0, len = stockage.length; i < len; i++ ) { //pour chaque clé du localstorage
-        console.log( stockage.key( i ) ) ;
-        if (input==stockage.key(i)) { //si l'input rentré est identique à une clé existante
-            alert("Tâche présente");
-            return false; //alors la fonction ne s'exécutera pas
-        }
-       }
+for ( var i = 0, len = stockage.length; i < len; i++ ) { //pour chaque clé du localstorage
+if (input==stockage.key(i)) { //si l'input rentré est identique à une clé existante
+    alert("Tâche présente");
+    return false; //alors la fonction ne s'exécutera pas
+    }
+}
 
 
-    var dateDeb = new Date(); //création d'une date/horaire de début(création de task)
-
-    var liste = document.createElement('li'); //je créé des éléments de liste 'li' pr chq fction lancée
-    var check = document.createElement('input'); //idem pour les inputs
-    var label = document.createElement('label'); //idem pr les labels
-    var heure = document.createElement('p'); //idem pr le span contenant l'heure
-    var supp = document.createElement('a');
+var dateDeb = new Date(); //création d'une date/horaire de début(création de task)
+var liste = document.createElement('li'); //je créé des éléments de liste 'li' pr chq fction lancée
+var check = document.createElement('input'); //idem pour les inputs
+var label = document.createElement('label'); //idem pr les labels
+var heure = document.createElement('p'); //idem pr le span contenant l'heure
+var supp = document.createElement('a');
 
     liste.setAttribute("id", "elmtLi" + i);
 
@@ -57,10 +57,9 @@ function addTask() {
     liste.appendChild(heure); // attribution du span à mon li
     liste.appendChild(supp); //attribution du bouton à mon li
     ulToDo.appendChild(liste); //attribution des li à mon élément ul
- 
 
     var okTask = check.addEventListener("click", doTask); //quand check est cliqué, il exécute la fonction suivante
-    
+
     function doTask() {
         if(check.checked) { //si le bouton est coché
             document.getElementById(input).style.textDecoration="line-through"; //alors sélection du label et lui attribuer un css pour rayer
@@ -71,8 +70,6 @@ function addTask() {
         var dateFin = new Date(); //création d'une date/horaire de fin(exécution de la task)
 
         temps = dateFin.getTime() - dateDeb.getTime(); //calcul du temps écoulé entre les 2 fonctions de création et de réalisation
-        console.log(temps/1000);
-
         alert("Vous avez mis " + temps/1000 + " secondes."); //création d'une alerte permettant de visualiser le tps écoulé
     };
 
@@ -119,6 +116,7 @@ function addTask() {
         
     };
 };
+
 
 
 

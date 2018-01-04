@@ -1,16 +1,19 @@
 body {
-	background-color: cornsilk;
+	background-color: azure;
 	font-family: 'Open Sans', sans-serif;
-	display: flex;
+	display: inline-block;
 	flex-direction: column;
 	align-content: center;
 	justify-content: center;
+	width: 100%;
 
 	#bigtitle {
-		align-self: center;
-		color: darkred;
+		display: flex;
+		justify-content: center;
+		color: rgb(38, 163, 212);
 		font-size: 40px;
 		margin-top: 20px;
+		width: 100%;
 	}
 
 	.add {
@@ -21,26 +24,27 @@ body {
 
 		#search {
 			justify-content: center;
-			margin-top: 40px;
+			margin-top: 80px;
 		}
 
 		#bouton {
 			justify-content: center;
 			margin-top: 20px;
-			background-color: darkred;
+			background-color: rgb(38, 163, 212);
 			margin-bottom: 60px;
 			width:100%;
 		}
 	}
 
 	#list {
-		display: inline-flex;
+		display: flex;
 		flex-direction: column;
-		width: 100%;
+		width: 75%;
+		margin-left: 5%;
 
 		a {
-			background-color: darkred !important;
-			width:9%;
+			background-color: rgb(38, 163, 212) !important;
+			width:159px;
 			font-size: 8px;
 			padding:0%;
 			height: 25%;
@@ -49,12 +53,11 @@ body {
 	}
 
 	#testComplet {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
+		width: 25%;
+		float: right;
 
 		.radio {
-			color: darkred !important;
+			color: rgb(38, 163, 212)!important;
 		}
 	}
 
