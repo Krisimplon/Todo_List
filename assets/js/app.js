@@ -1,6 +1,6 @@
 console.log('connect')
 
-//alert("Welcome!");
+alert("Welcome!");
 
 var bouton = document.getElementById("bouton"); //je capture mon bouton
 var ulToDo = document.getElementById("list"); //je capture mon élément ul dans le html
@@ -10,7 +10,16 @@ var tachesOk = document.getElementById('test2');
 var allTask = document.getElementById('test3');
 var x = 0;
 
-bouton.addEventListener("click", function (e) { //création d'une fonction anonyme pour le bouton
+// if(localStorage.length > 0) { // si il y a au moins un élèment ds le localstorage alors
+//     var tab = Object.keys(localStorage) //on prends les clés ds un tableau
+//     tab.forEach(function(element) { // pour chaque clés du tableau
+//         window.onload = function() {
+//             ;
+//     });
+// }
+
+bouton.addEventListener("click", function (event) { //création d'une fonction anonyme pour le bouton
+    event.preventDefault(); //pour pouvoir taper sur entree pr ajout de la tache
     var input = document.getElementById("search").value; //je récupère dans une variable la valeur de mon input
     addTask(input)// j'attribue un paramètre à ma fonction pour qu'elle reconnaisse quand je l'exécute
 });
@@ -51,6 +60,7 @@ function addTask(input) {
     heure.setAttribute("class", "affichageHeure");//attribution d'une classe à mon élément span
 
     supp.setAttribute("class", "waves-effect waves-light btn"); //attribution d'une classe à mon bouton
+    supp.setAttribute("Onclick", "return (confirm('Etes-vous sûr de vouloir supprimer ?'));");//attribution d'un onclick (demande de confirmation de suppression)
     supp.addEventListener('click', function (e) { //attribution d'un listener et d'une fonction à mon bouton
         doSupp(supp, liste, input) //j'appelle la fonction
     });
@@ -65,16 +75,18 @@ function addTask(input) {
     liste.appendChild(supp); //attribution du bouton à mon li
     ulToDo.appendChild(liste); //attribution des li à mon élément ul
     a++; //va permettre d'incrémenter de 1 mes 2 i placés au-dessus
-
-    localStorage.setItem(input, dateDeb);
+    
+    stockage(input, false, dateDeb); //appelle la fonction stockage avec les paramètres nécessaires, false=si check n'est pas coché
 };
 
 
 function doTask(check, input, dateDeb) { //quand check est cliqué, il exécute la fonction suivante
     if (check.checked) { //si le bouton est coché
         document.getElementById(input).style.textDecoration = "line-through"; //alors sélection du label et lui attribuer un css pour rayer
+        stockage(input, true, dateDeb);
     } else {
         document.getElementById(input).style.textDecoration = "none"; //sinon il n'est pas rayé
+        stockage(input, false, dateDeb);
     }
 
     var dateFin = new Date(); //création d'une date/horaire de fin(exécution de la task)
@@ -118,7 +130,14 @@ allTask.addEventListener('click', function filtre3() {
     });
 });
 
+function stockage(input, check, dateDeb) { 
+    var stock = {  //creation d'un tableau d'objets pour récupérer mes valeurs
+        coch : check,
+        horaire : dateDeb
+    };
 
+    localStorage.setItem(input, JSON.stringify(stock));
+};
 
 
 

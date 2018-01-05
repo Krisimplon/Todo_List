@@ -36,33 +36,56 @@ body {
 		}
 	}
 
-	#list {
-		display: flex;
-		flex-direction: column;
-		width: 75%;
-		margin-left: 5%;
+	#multiTask {
+		display: inline-flex;
+		flex-direction: row;
+		width: 100%;
 
-		a {
-			background-color: rgb(38, 163, 212) !important;
-			width:159px;
-			font-size: 8px;
-			padding:0%;
-			height: 25%;
-			margin-bottom: 3% !important;
+		#blocList {
+			display: flex;
+			background-color: #e7e5e3;
+			width: 60%;
+			padding: 10px;
+			margin-left: 40px;
+			margin-bottom: 15px;
+	
+			#list {
+				width: 75%;
+				margin-left: 5%;
+
+				label{
+					font-size: 17px !important;
+				}
+		
+				a {
+					background-color: rgb(38, 163, 212) !important;
+					width:159px;
+					font-size: 8px;
+					padding:0%;
+					height: 25%;
+					margin-bottom: 10% !important;
+				}
+			}
 		}
-	}
+	
+		#testComplet {
+			width: 25%;
+			margin-left: 10%;
+			font-size: 15px;
+			display: flex;
+			flex-direction: column;
 
-	#testComplet {
-		width: 25%;
-		float: right;
-
-		.radio {
-			color: rgb(38, 163, 212)!important;
+			label {
+				font-size: 15px !important;
+			}
+	
+			.radio {
+				color: rgb(38, 163, 212)!important;
+			}
 		}
 	}
 
 	label {
-		font-size: 20px !important;
 		color: black;
 	}
 
