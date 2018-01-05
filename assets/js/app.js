@@ -65,9 +65,10 @@ function addTask(input) {
         doSupp(supp, liste, input) //j'appelle la fonction
     });
 
-    label.innerHTML = input; //place la valeur de l'input (ajout tâche) dans le label
-    heure.innerHTML = dateDeb.toLocaleDateString("fr-FR") + " - " + dateDeb.toLocaleTimeString("fr-FR") + "   ";//place l'heure dans le html avec une simplification permettant de la rendre lisible
     supp.innerHTML = "Supprimer";
+    label.innerHTML = input + "<br>"; //place la valeur de l'input (ajout tâche) dans le label
+    heure.innerHTML = dateDeb.toLocaleDateString("fr-FR") + " - " + dateDeb.toLocaleTimeString("fr-FR") + "   ";//place l'heure dans le html avec une simplification permettant de la rendre lisible
+    
     
     liste.appendChild(check); //attribution du check à mon li
     liste.appendChild(label);  //attribution du label à mon li
@@ -78,7 +79,6 @@ function addTask(input) {
     
     stockage(input, false, dateDeb); //appelle la fonction stockage avec les paramètres nécessaires, false=si check n'est pas coché
 };
-
 
 function doTask(check, input, dateDeb) { //quand check est cliqué, il exécute la fonction suivante
     if (check.checked) { //si le bouton est coché

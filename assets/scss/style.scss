@@ -53,18 +53,27 @@ body {
 				width: 75%;
 				margin-left: 5%;
 
-				label{
-					font-size: 17px !important;
-				}
+				li {
+					display: inline-flex;
+					flex-direction: row;
+					width: 100%;
+
+					label{
+						font-size: 17px !important;
+						margin-right: 35px;
+					}
 		
-				a {
-					background-color: rgb(38, 163, 212) !important;
-					width:159px;
-					font-size: 8px;
-					padding:0%;
-					height: 25%;
-					margin-bottom: 10% !important;
+					a {
+						background-color: rgb(38, 163, 212) !important;
+						width:159px;
+						font-size: 8px;
+						padding:0%;
+						height: 25%;
+						margin-bottom: 10% !important;
+						margin-left: 10%;
+					}
 				}
+
 			}
 		}
 	
@@ -88,5 +97,4 @@ body {
 	label {
 		color: black;
 	}
-
 }
